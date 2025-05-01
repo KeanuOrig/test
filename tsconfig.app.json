@@ -39,6 +39,8 @@
       "@constants/*": ["utils/constants/*"],
       "@views/*": ["views/*"],
       "@tstypes/*": ["types/*"],
+      "@lib/*": ["lib/*"],
+      "@api/*": ["api/*"],
     }
   },
   "include": ["src"]

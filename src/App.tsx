@@ -1,13 +1,14 @@
-function App() {
+import DelayForm from '@components/DelayForm';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-  console.log(import.meta.env);
+function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-    </>
-  )
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <ToastContainer position="top-center" autoClose={5000}/>
+      <DelayForm />
+    </div>
+  );
 }
 
-export default App
+export default App;
