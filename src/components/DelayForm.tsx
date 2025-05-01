@@ -34,7 +34,7 @@ const DelayForm = () => {
             toast.error("Invalid Webhook URL. Please enter a valid URL.");
             return;
         }
-        
+
         const delayInMilliseconds = convertToMilliseconds(delay, unit);
 
         setIsSending(true);
@@ -47,12 +47,16 @@ const DelayForm = () => {
 
             if (timeLeft < 0) {
                 clearInterval(intervalId);
-                sendDelayedMessage();
             }
         }, 1000); // Update every second
 
         // Set the button label to countdown
         setButtonLabel(`Sending in ${timeLeft} seconds`);
+
+        // Wait for the delay before sending the message
+        setTimeout(async () => {
+            await sendDelayedMessage();
+        }, delayInMilliseconds); // Wait for the full delay time
     };
 
     const sendDelayedMessage = async () => {
@@ -85,7 +89,7 @@ const DelayForm = () => {
         return 0;
     }
 
-    const isDisabled = !message || !webhookUrl || isSending
+    const isDisabled = !delay || !message || !webhookUrl || isSending
 
     return (
         <div className="space-y-4">
