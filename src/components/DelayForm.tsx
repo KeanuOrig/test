@@ -37,13 +37,12 @@ const DelayForm = () => {
         
         const delayInMilliseconds = convertToMilliseconds(delay, unit);
 
-
         setIsSending(true);
 
         // Countdown logic
         let timeLeft = delayInMilliseconds / 1000; // Convert to seconds for countdown
         const intervalId = setInterval(() => {
-            setRemainingTime(timeLeft);
+            setRemainingTime(timeLeft); // Correctly update state
             timeLeft -= 1;
 
             if (timeLeft < 0) {
